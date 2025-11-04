@@ -1,23 +1,207 @@
+/* Barbie Play Ideas Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(224,33,138,0.10) backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 24px;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 8px 40px 0 rgba(224,33,138,0.18), 0 2px 8px 0 rgba(0,0,0,0.06);
+  border: 3px solid #e0218a;
+  min-width: 280px;
+  max-width: 90vw;
+  text-align: center;
+  position: relative;
+  z-index: 1001;
+}
+.modal-title {
+  font-family: 'Pacifico', cursive, Arial, sans-serif;
+  color: #e0218a;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+#idea-text {
+  color: #8a0057;
+  font-size: 1.08rem;
+  margin-bottom: 18px;
+  font-family: Arial, sans-serif;
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #e0218a;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1002;
+}
+/* Whimsical sparkles, hearts, stars, and rainbow */
+.sparkle, .heart, .star, .rainbow {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+}
+.sparkle1 {
+  top: 12vh;
+  left: 18vw;
+  animation: sparkle-float1 7s ease-in-out infinite alternate;
+}
+.sparkle2 {
+  top: 60vh;
+  left: 70vw;
+  animation: sparkle-float2 9s ease-in-out infinite alternate;
+}
+@keyframes sparkle-float1 {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(1.2) translateY(-30px); opacity: 0.7; }
+}
+@keyframes sparkle-float2 {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(0.9) translateY(24px); opacity: 0.6; }
+}
+.heart1 {
+  top: 40vh;
+  left: 12vw;
+  animation: heart-float 12s ease-in-out infinite alternate;
+}
+@keyframes heart-float {
+  0% { transform: scale(1) translateY(0); opacity: 0.8; }
+  100% { transform: scale(1.1) translateY(-40px); opacity: 0.5; }
+}
+.star1 {
+  top: 22vh;
+  left: 80vw;
+  animation: star-float 10s ease-in-out infinite alternate;
+}
+@keyframes star-float {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.9; }
+  100% { transform: rotate(18deg) scale(1.15); opacity: 0.6; }
+}
+.rainbow {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  opacity: 0.7;
+  z-index: 1;
+}
+/* Animated clouds background */
+.cloud {
+  position: fixed;
+  top: 0;
+  left: -200px;
+  z-index: 0;
+  pointer-events: none;
+  animation-timing-function: linear;
+}
+.cloud1 {
+  top: 8vh;
+  width: 120px;
+  animation: cloud-move1 48s infinite;
+}
+.cloud2 {
+  top: 22vh;
+  width: 90px;
+  animation: cloud-move2 64s infinite;
+}
+.cloud3 {
+  top: 38vh;
+  width: 70px;
+  animation: cloud-move3 80s infinite;
+}
+@keyframes cloud-move1 {
+  0% { left: -200px; }
+  100% { left: 110vw; }
+}
+@keyframes cloud-move2 {
+  0% { left: -120px; }
+  100% { left: 100vw; }
+}
+@keyframes cloud-move3 {
+  0% { left: -100px; }
+  100% { left: 105vw; }
+}
+body > .cloud {
+  opacity: 0.7;
+}
+.btn-throb {
+  /* Animation will be triggered on hover */
+}
+
+@keyframes barbie-throb {
+  0% {
+    transform: scale(1);
+    background: var(--barbie-pink);
+    box-shadow: 0 6px 18px rgba(224,33,138,0.18);
+  }
+  15% {
+    transform: scale(1.08);
+    background: #ff69b4;
+    box-shadow: 0 10px 28px #ffb6e6;
+  }
+  30% {
+    transform: scale(1.12);
+    background: #fff0f6;
+    box-shadow: 0 12px 32px #e0218a;
+  }
+  45% {
+    transform: scale(1.10);
+    background: #a259d9; /* purple */
+    box-shadow: 0 12px 32px #a259d9;
+  }
+  60% {
+    transform: scale(1.08);
+    background: #1bb8b9; /* teal */
+    box-shadow: 0 10px 28px #1bb8b9;
+  }
+  75% {
+    transform: scale(1.04);
+    background: var(--barbie-pink-dark);
+    box-shadow: 0 8px 24px #e0218a;
+  }
+  100% {
+    transform: scale(1);
+    background: var(--barbie-pink);
+    box-shadow: 0 6px 18px rgba(224,33,138,0.18);
+  }
+}
 :root{
   --barbie-pink: #e0218a;
-  --barbie-pink-light: #ffb6e6;
-  --barbie-pink-dark: #b8006e;
+  --barbie-pink-light: #ffe0f0;
+  --barbie-pink-dark: #8a0057;
+  --barbie-purple: #a259d9;
+  --barbie-teal: #1bb8b9;
+  --barbie-black: #2d0036;
   --white: #fff;
   --glass: rgba(255,255,255,0.18);
   --accent: rgba(255,255,255,0.32);
 }
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{
+  min-height:100vh;
+  width:100%;
+}
 body{
   margin:0;
   font-family:'Pacifico', cursive, Arial, sans-serif;
   background:
-    linear-gradient(135deg, var(--barbie-pink-light) 0%, var(--barbie-pink) 100%),
-    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.06) 35px, rgba(255,255,255,0.06) 70px),
-    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,0.04) 35px, rgba(255,255,255,0.04) 70px);
+    linear-gradient(135deg, rgba(255,224,240,0.82) 0%, rgba(224,33,138,0.38) 100%),
+    url('assets/barbiedreamhouse.jpg') center center / cover no-repeat fixed;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  color: var(--barbie-pink-dark);
+  color: var(--barbie-black);
 }
 .hero{
   min-height:100vh;
@@ -34,7 +218,7 @@ body{
   max-width: 90vw;
   text-align: center;
   box-shadow: 0 8px 40px 0 rgba(224,33,138,0.18), 0 2px 8px 0 rgba(0,0,0,0.06);
-  border: 4px solid var(--barbie-pink-light);
+  border: 4px solid var(--barbie-pink);
   position: relative;
 }
 .avatar{
@@ -52,36 +236,66 @@ body{
   margin: 0 0 10px;
   font-size: 2.2rem;
   letter-spacing: 1.5px;
-  color: var(--barbie-pink);
+  color: var(--barbie-pink-dark);
   font-family: 'Pacifico', cursive, Arial, sans-serif;
   text-shadow: 0 2px 8px var(--barbie-pink-light);
 }
 .subtitle{
   margin: 0 0 22px;
   font-size: 1.08rem;
-  color: var(--barbie-pink-dark);
+  color: var(--barbie-black);
   font-family: Arial, sans-serif;
   font-weight: 500;
 }
 .btn{
   appearance: none;
   border: none;
-  background: var(--barbie-pink);
-  color: var(--white);
+  background: #1bb8b9;
+  color: #fff;
+  text-shadow: 0 1px 2px #0002;
   padding: 12px 28px;
   border-radius: 24px;
   font-weight: 700;
   font-size: 1.1rem;
   font-family: 'Pacifico', cursive, Arial, sans-serif;
   cursor: pointer;
-  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
-  box-shadow: 0 6px 18px rgba(224,33,138,0.18);
+  transition: transform .12s ease, box-shadow .12s ease, background 0.3s;
+  box-shadow: 0 6px 18px rgba(27,184,185,0.18);
   margin-top: 10px;
   letter-spacing: 1px;
 }
 .btn:active{transform:translateY(1px)}
-.btn:hover{
-  background: var(--barbie-pink-dark);
+@keyframes btn-gradient-throb {
+  0% {
+    background: linear-gradient(90deg, #e0218a, #ffe066, #1bb8b9, #a259d9);
+    background-size: 400% 400%;
+    transform: scale(1);
+  }
+  25% {
+    background: linear-gradient(120deg, #ffe066, #1bb8b9, #a259d9, #e0218a);
+    background-size: 400% 400%;
+    transform: scale(1.08);
+  }
+  50% {
+    background: linear-gradient(180deg, #1bb8b9, #a259d9, #e0218a, #ffe066);
+    background-size: 400% 400%;
+    transform: scale(1.12);
+  }
+  75% {
+    background: linear-gradient(240deg, #a259d9, #e0218a, #ffe066, #1bb8b9);
+    background-size: 400% 400%;
+    transform: scale(1.08);
+  }
+  100% {
+    background: linear-gradient(90deg, #e0218a, #ffe066, #1bb8b9, #a259d9);
+    background-size: 400% 400%;
+    transform: scale(1);
+  }
+}
+
+.btn:hover {
+  animation: btn-gradient-throb 2.2s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+  color: #fff;
   box-shadow: 0 10px 28px rgba(224,33,138,0.28);
 }
 @media (min-width:700px){

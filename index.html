@@ -10,12 +10,96 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Whimsical sparkles, hearts, stars, and rainbow -->
+  <div class="sparkle sparkle1" aria-hidden="true">
+    <svg width="32" height="32" viewBox="0 0 32 32"><g fill="#fff8" stroke="#fff" stroke-width="1.2"><circle cx="16" cy="16" r="2.5"/><path d="M16 6v6m0 8v6m-6-6h-6m18 0h6"/></g></svg>
+  </div>
+  <div class="sparkle sparkle2" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 20 20"><g fill="#fff6" stroke="#fff" stroke-width="1"><circle cx="10" cy="10" r="1.5"/><path d="M10 3v3m0 8v3m-3-3H3m11 0h3"/></g></svg>
+  </div>
+  <div class="heart heart1" aria-hidden="true">
+    <svg width="32" height="32" viewBox="0 0 32 32"><path d="M16 29s-9-6.6-9-13.2C7 9.2 12.2 7 16 12c3.8-5 9-2.8 9 3.8C25 22.4 16 29 16 29z" fill="#ffb6e6" stroke="#e0218a" stroke-width="1.5"/></svg>
+  </div>
+  <div class="star star1" aria-hidden="true">
+    <svg width="28" height="28" viewBox="0 0 28 28"><polygon points="14,3 17,11 25,11 18.5,16 21,24 14,19 7,24 9.5,16 3,11 11,11" fill="#ffe0f0" stroke="#e0218a" stroke-width="1.2"/></svg>
+  </div>
+  <!-- Animated clouds background -->
+  <div class="cloud cloud1" aria-hidden="true">
+    <svg width="120" height="48" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="30" cy="24" rx="30" ry="18" fill="#fff" fill-opacity="0.7"/>
+      <ellipse cx="60" cy="20" rx="24" ry="14" fill="#fff" fill-opacity="0.5"/>
+      <ellipse cx="90" cy="28" rx="18" ry="10" fill="#fff" fill-opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="cloud cloud2" aria-hidden="true">
+    <svg width="90" height="36" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="22" cy="18" rx="22" ry="10" fill="#fff" fill-opacity="0.5"/>
+      <ellipse cx="60" cy="14" rx="18" ry="8" fill="#fff" fill-opacity="0.4"/>
+    </svg>
+  </div>
+  <div class="cloud cloud3" aria-hidden="true">
+    <svg width="70" height="28" viewBox="0 0 70 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="18" cy="14" rx="18" ry="8" fill="#fff" fill-opacity="0.4"/>
+      <ellipse cx="50" cy="10" rx="14" ry="6" fill="#fff" fill-opacity="0.3"/>
+    </svg>
+  </div>
   <main class="hero">
     <div class="card">
-  <img src="assets/Slalom Headshot-130.jpeg" alt="Profile photo of Sam Miller" class="avatar" loading="lazy">
+  <svg viewBox="0 0 24 24" width="128" height="128" class="avatar" aria-label="Barbie headshot" style="display:block;margin:0 auto 18px;">
+    <defs>
+      <clipPath id="starburst-clip">
+        <path d="M19.064 10.109l1.179-2.387c.074-.149.068-.327-.015-.471-.083-.145-.234-.238-.401-.249l-2.656-.172-.172-2.656c-.011-.167-.104-.317-.249-.401-.145-.084-.322-.09-.472-.015l-2.385 1.18-1.477-2.215c-.186-.278-.646-.278-.832 0l-1.477 2.215-2.385-1.18c-.151-.075-.327-.069-.472.015-.145.083-.238.234-.249.401l-.171 2.656-2.657.171c-.167.011-.318.104-.401.249-.084.145-.089.322-.015.472l1.179 2.386-2.214 1.477c-.139.093-.223.249-.223.416s.083.323.223.416l2.215 1.477-1.18 2.386c-.074.15-.068.327.015.472.083.144.234.238.401.248l2.656.171.171 2.657c.011.167.104.317.249.401.144.083.32.088.472.015l2.386-1.179 1.477 2.214c.093.139.249.223.416.223s.323-.083.416-.223l1.477-2.214 2.386 1.179c.15.073.327.068.472-.015s.238-.234.249-.401l.171-2.656 2.656-.172c.167-.011.317-.104.401-.249.083-.145.089-.322.015-.472l-1.179-2.385 2.214-1.478c.139-.093.223-.249.223-.416s-.083-.323-.223-.416l-2.214-1.475z"/>
+      </clipPath>
+    </defs>
+    <path d="M19.064 10.109l1.179-2.387c.074-.149.068-.327-.015-.471-.083-.145-.234-.238-.401-.249l-2.656-.172-.172-2.656c-.011-.167-.104-.317-.249-.401-.145-.084-.322-.09-.472-.015l-2.385 1.18-1.477-2.215c-.186-.278-.646-.278-.832 0l-1.477 2.215-2.385-1.18c-.151-.075-.327-.069-.472.015-.145.083-.238.234-.249.401l-.171 2.656-2.657.171c-.167.011-.318.104-.401.249-.084.145-.089.322-.015.472l1.179 2.386-2.214 1.477c-.139.093-.223.249-.223.416s.083.323.223.416l2.215 1.477-1.18 2.386c-.074.15-.068.327.015.472.083.144.234.238.401.248l2.656.171.171 2.657c.011.167.104.317.249.401.144.083.32.088.472.015l2.386-1.179 1.477 2.214c.093.139.249.223.416.223s.323-.083.416-.223l1.477-2.214 2.386 1.179c.15.073.327.068.472-.015s.238-.234.249-.401l.171-2.656 2.656-.172c.167-.011.317-.104.401-.249.083-.145.089-.322.015-.472l-1.179-2.385 2.214-1.478c.139-.093.223-.249.223-.416s-.083-.323-.223-.416l-2.214-1.475z" fill="#ffe0f0" stroke="#e0218a" stroke-width="0.5"/>
+    <image href="assets/barbieheadshot.jpeg" x="2" y="2" width="20" height="20" clip-path="url(#starburst-clip)" preserveAspectRatio="xMidYMid slice" alt="Barbie headshot"/>
+  </svg>
   <h1 class="title">Barbie World!</h1>
   <p class="subtitle">Welcome to my Barbie-inspired page — pink, fun, and fabulous!</p>
-  <button class="btn" type="button">Contact Barbie</button>
+  <button class="btn" id="play-ideas-btn" type="button">Barbie Play Ideas</button>
+  <div id="play-ideas-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <button class="modal-close" id="close-modal" aria-label="Close">&times;</button>
+      <h2 class="modal-title">Barbie Play Idea</h2>
+      <p id="idea-text">Let's go on a Barbie adventure!</p>
+      <button class="btn" id="new-idea-btn" type="button">Show another idea</button>
+    </div>
+  </div>
+  <script>
+    const ideas = [
+      "Host a Barbie fashion show with creative outfits!",
+      "Build a Barbie Dreamhouse out of boxes and decorate it.",
+      "Create a Barbie spa day with mini towels and water bowls.",
+      "Go on a Barbie camping trip with a tent and sleeping bags.",
+      "Make a Barbie movie—write a script and act it out!",
+      "Set up a Barbie pet adoption center with stuffed animals.",
+      "Have a Barbie birthday party with tiny treats.",
+      "Invent a new Barbie sport and play it together.",
+      "Plan a Barbie road trip with cars and maps.",
+      "Put on a Barbie talent show with singing and dancing."
+    ];
+    function randomIdea() {
+      return ideas[Math.floor(Math.random() * ideas.length)];
+    }
+    const modal = document.getElementById('play-ideas-modal');
+    const btn = document.getElementById('play-ideas-btn');
+    const closeBtn = document.getElementById('close-modal');
+    const ideaText = document.getElementById('idea-text');
+    const newIdeaBtn = document.getElementById('new-idea-btn');
+    btn.onclick = () => {
+      ideaText.textContent = randomIdea();
+      modal.style.display = 'flex';
+    };
+    closeBtn.onclick = () => {
+      modal.style.display = 'none';
+    };
+    newIdeaBtn.onclick = () => {
+      ideaText.textContent = randomIdea();
+    };
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    };
+  </script>
     </div>
   </main>
 </body>
