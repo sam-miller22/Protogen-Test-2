@@ -203,19 +203,88 @@
     const closeBtn = document.getElementById('close-modal');
     const ideaText = document.getElementById('idea-text');
     const newIdeaBtn = document.getElementById('new-idea-btn');
+    // Confetti logic
+    let confettiInterval = null;
+    let confettiContainer = null;
+    function startConfetti() {
+      if (confettiContainer) return;
+      confettiContainer = document.createElement('div');
+      confettiContainer.className = 'confetti-container';
+      document.body.appendChild(confettiContainer);
+      confettiInterval = setInterval(() => {
+        for (let i = 0; i < 12; i++) {
+          const conf = document.createElement('div');
+          conf.className = 'confetti';
+          conf.style.left = Math.random() * 100 + 'vw';
+          conf.style.background = [
+            '#e0218a', '#ffb6e6', '#ffe0f0', '#fff', '#74b9ff', '#0984e3', '#f7c948', '#f78da7'
+          ][Math.floor(Math.random() * 8)];
+          conf.style.animationDelay = (Math.random() * 0.7) + 's';
+          confettiContainer.appendChild(conf);
+          setTimeout(() => conf.remove(), 2200);
+        }
+      }, 350);
+    }
+    function stopConfetti() {
+      if (confettiInterval) clearInterval(confettiInterval);
+      confettiInterval = null;
+      if (confettiContainer) {
+        confettiContainer.classList.add('fade-out');
+        setTimeout(() => {
+          if (confettiContainer) confettiContainer.remove();
+          confettiContainer = null;
+        }, 1200);
+      }
+    }
+
     btn.onclick = () => {
       ideaText.textContent = randomIdeaByWeather();
       modal.style.display = 'flex';
+      startConfetti();
     };
     closeBtn.onclick = () => {
       modal.style.display = 'none';
+      stopConfetti();
     };
     newIdeaBtn.onclick = () => {
       ideaText.textContent = randomIdeaByWeather();
     };
     window.onclick = (e) => {
-      if (e.target === modal) modal.style.display = 'none';
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        stopConfetti();
+      }
     };
+</script>
+<style>
+.confetti-container {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 0;
+  z-index: 9999;
+  transition: opacity 1s;
+}
+.confetti-container.fade-out {
+  opacity: 0;
+}
+.confetti {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 18px;
+  border-radius: 3px;
+  opacity: 0.85;
+  animation: confetti-fall 2s cubic-bezier(.6,.3,.4,1) forwards;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-30px) rotateZ(0deg); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(100vh) rotateZ(360deg); opacity: 0; }
+}
+</style>
   </script>
     </div>
   </main>
