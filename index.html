@@ -4,12 +4,78 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Home — Hello</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/weather-widget.css">
 </head>
 <body>
+  <!-- Weather Widget (upper right, minimal Barbie theme) -->
+  <div id="weather-widget" class="weather-widget">
+    <form id="weather-location-form" style="margin-bottom:8px;text-align:center;">
+      <label for="weather-location-select" style="font-size:0.95em;color:#e0218a;font-family:inherit;">Location:</label>
+      <select id="weather-location-select" style="margin-left:4px;padding:2px 6px;border-radius:6px;border:1px solid #e0218a;font-family:inherit;max-width:100%;">
+        <option value="42.5295,-83.7802,Brighton, MI">Brighton, MI</option>
+        <option value="40.7128,-74.0060,New York, NY">New York, NY</option>
+        <option value="34.0522,-118.2437,Los Angeles, CA">Los Angeles, CA</option>
+        <option value="41.8781,-87.6298,Chicago, IL">Chicago, IL</option>
+        <option value="29.7604,-95.3698,Houston, TX">Houston, TX</option>
+        <option value="33.4484,-112.0740,Phoenix, AZ">Phoenix, AZ</option>
+        <option value="39.7392,-104.9903,Denver, CO">Denver, CO</option>
+        <option value="25.7617,-80.1918,Miami, FL">Miami, FL</option>
+        <option value="32.7767,-96.7970,Dallas, TX">Dallas, TX</option>
+        <option value="37.7749,-122.4194,San Francisco, CA">San Francisco, CA</option>
+        <option value="38.9072,-77.0369,Washington, DC">Washington, DC</option>
+        <option value="39.9526,-75.1652,Philadelphia, PA">Philadelphia, PA</option>
+        <option value="33.7490,-84.3880,Atlanta, GA">Atlanta, GA</option>
+        <option value="47.6062,-122.3321,Seattle, WA">Seattle, WA</option>
+        <option value="45.5122,-122.6587,Portland, OR">Portland, OR</option>
+        <option value="36.1627,-86.7816,Nashville, TN">Nashville, TN</option>
+        <option value="35.2271,-80.8431,Charlotte, NC">Charlotte, NC</option>
+        <option value="35.1495,-90.0490,Memphis, TN">Memphis, TN</option>
+        <option value="29.4241,-98.4936,San Antonio, TX">San Antonio, TX</option>
+        <option value="39.7684,-86.1581,Indianapolis, IN">Indianapolis, IN</option>
+        <option value="43.6532,-79.3832,Toronto, Canada">Toronto, Canada</option>
+        <option value="45.4215,-75.6997,Ottawa, Canada">Ottawa, Canada</option>
+        <option value="49.2827,-123.1207,Vancouver, Canada">Vancouver, Canada</option>
+        <option value="51.0447,-114.0719,Calgary, Canada">Calgary, Canada</option>
+        <option value="53.5461,-113.4938,Edmonton, Canada">Edmonton, Canada</option>
+        <option value="51.5074,-0.1278,London, UK">London, UK</option>
+        <option value="48.8566,2.3522,Paris, France">Paris, France</option>
+        <option value="52.52,13.4050,Berlin, Germany">Berlin, Germany</option>
+        <option value="41.9028,12.4964,Rome, Italy">Rome, Italy</option>
+        <option value="40.4168,-3.7038,Madrid, Spain">Madrid, Spain</option>
+        <option value="35.6895,139.6917,Tokyo, Japan">Tokyo, Japan</option>
+        <option value="37.5665,126.9780,Seoul, South Korea">Seoul, South Korea</option>
+        <option value="31.2304,121.4737,Shanghai, China">Shanghai, China</option>
+        <option value="28.6139,77.2090,New Delhi, India">New Delhi, India</option>
+        <option value="-33.8688,151.2093,Sydney, Australia">Sydney, Australia</option>
+        <option value="-37.8136,144.9631,Melbourne, Australia">Melbourne, Australia</option>
+        <option value="-23.5505,-46.6333,São Paulo, Brazil">São Paulo, Brazil</option>
+        <option value="-34.6037,-58.3816,Buenos Aires, Argentina">Buenos Aires, Argentina</option>
+        <option value="-33.4489,-70.6693,Santiago, Chile">Santiago, Chile</option>
+        <option value="55.7558,37.6173,Moscow, Russia">Moscow, Russia</option>
+        <option value="59.9343,30.3351,St. Petersburg, Russia">St. Petersburg, Russia</option>
+        <option value="30.0444,31.2357,Cairo, Egypt">Cairo, Egypt</option>
+        <option value="-26.2041,28.0473,Johannesburg, South Africa">Johannesburg, South Africa</option>
+        <option value="-33.9249,18.4241,Cape Town, South Africa">Cape Town, South Africa</option>
+        <option value="25.276987,55.296249,Dubai, UAE">Dubai, UAE</option>
+        <option value="24.7136,46.6753,Riyadh, Saudi Arabia">Riyadh, Saudi Arabia</option>
+        <option value="19.4326,-99.1332,Mexico City, Mexico">Mexico City, Mexico</option>
+        <option value="-22.9068,-43.1729,Rio de Janeiro, Brazil">Rio de Janeiro, Brazil</option>
+        <option value="-12.0464,-77.0428,Lima, Peru">Lima, Peru</option>
+        <option value="13.7563,100.5018,Bangkok, Thailand">Bangkok, Thailand</option>
+        <option value="1.3521,103.8198,Singapore">Singapore</option>
+        <option value="-36.8485,174.7633,Auckland, New Zealand">Auckland, New Zealand</option>
+      </select>
+    </form>
+    <div class="weather-loading">
+      <div class="loading-spinner"></div>
+      <p>Loading weather...</p>
+    </div>
+  </div>
   <!-- Whimsical sparkles, hearts, stars, and rainbow -->
   <div class="sparkle sparkle1" aria-hidden="true">
     <svg width="32" height="32" viewBox="0 0 32 32"><g fill="#fff8" stroke="#fff" stroke-width="1.2"><circle cx="16" cy="16" r="2.5"/><path d="M16 6v6m0 8v6m-6-6h-6m18 0h6"/></g></svg>
@@ -26,33 +92,29 @@
   <!-- Animated clouds background -->
   <div class="cloud cloud1" aria-hidden="true">
     <svg width="120" height="48" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="30" cy="24" rx="30" ry="18" fill="#fff" fill-opacity="0.7"/>
-      <ellipse cx="60" cy="20" rx="24" ry="14" fill="#fff" fill-opacity="0.5"/>
-      <ellipse cx="90" cy="28" rx="18" ry="10" fill="#fff" fill-opacity="0.6"/>
+      <path d="M10 38 Q18 28 30 34 Q36 24 48 30 Q54 18 66 26 Q74 16 86 24 Q94 18 104 28 Q110 24 116 38 L10 38 Z" fill="#fff" fill-opacity="0.7"/>
     </svg>
   </div>
   <div class="cloud cloud2" aria-hidden="true">
     <svg width="90" height="36" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="22" cy="18" rx="22" ry="10" fill="#fff" fill-opacity="0.5"/>
-      <ellipse cx="60" cy="14" rx="18" ry="8" fill="#fff" fill-opacity="0.4"/>
+      <path d="M6 28 Q14 20 22 24 Q28 16 38 20 Q44 12 54 18 Q60 10 70 16 Q76 12 84 28 L6 28 Z" fill="#fff" fill-opacity="0.5"/>
     </svg>
   </div>
   <div class="cloud cloud3" aria-hidden="true">
     <svg width="70" height="28" viewBox="0 0 70 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="18" cy="14" rx="18" ry="8" fill="#fff" fill-opacity="0.4"/>
-      <ellipse cx="50" cy="10" rx="14" ry="6" fill="#fff" fill-opacity="0.3"/>
+      <path d="M4 20 Q10 14 16 16 Q20 10 28 14 Q32 8 40 12 Q44 6 54 10 Q60 8 66 20 L4 20 Z" fill="#fff" fill-opacity="0.4"/>
     </svg>
   </div>
   <main class="hero">
     <div class="card">
-  <svg viewBox="0 0 24 24" width="128" height="128" class="avatar" aria-label="Barbie headshot" style="display:block;margin:0 auto 18px;">
+  <svg viewBox="0 0 24 24" width="150" height="140" aria-label="Barbie headshot">
     <defs>
       <clipPath id="starburst-clip">
         <path d="M19.064 10.109l1.179-2.387c.074-.149.068-.327-.015-.471-.083-.145-.234-.238-.401-.249l-2.656-.172-.172-2.656c-.011-.167-.104-.317-.249-.401-.145-.084-.322-.09-.472-.015l-2.385 1.18-1.477-2.215c-.186-.278-.646-.278-.832 0l-1.477 2.215-2.385-1.18c-.151-.075-.327-.069-.472.015-.145.083-.238.234-.249.401l-.171 2.656-2.657.171c-.167.011-.318.104-.401.249-.084.145-.089.322-.015.472l1.179 2.386-2.214 1.477c-.139.093-.223.249-.223.416s.083.323.223.416l2.215 1.477-1.18 2.386c-.074.15-.068.327.015.472.083.144.234.238.401.248l2.656.171.171 2.657c.011.167.104.317.249.401.144.083.32.088.472.015l2.386-1.179 1.477 2.214c.093.139.249.223.416.223s.323-.083.416-.223l1.477-2.214 2.386 1.179c.15.073.327.068.472-.015s.238-.234.249-.401l.171-2.656 2.656-.172c.167-.011.317-.104.401-.249.083-.145.089-.322.015-.472l-1.179-2.385 2.214-1.478c.139-.093.223-.249.223-.416s-.083-.323-.223-.416l-2.214-1.475z"/>
       </clipPath>
     </defs>
     <path d="M19.064 10.109l1.179-2.387c.074-.149.068-.327-.015-.471-.083-.145-.234-.238-.401-.249l-2.656-.172-.172-2.656c-.011-.167-.104-.317-.249-.401-.145-.084-.322-.09-.472-.015l-2.385 1.18-1.477-2.215c-.186-.278-.646-.278-.832 0l-1.477 2.215-2.385-1.18c-.151-.075-.327-.069-.472.015-.145.083-.238.234-.249.401l-.171 2.656-2.657.171c-.167.011-.318.104-.401.249-.084.145-.089.322-.015.472l1.179 2.386-2.214 1.477c-.139.093-.223.249-.223.416s.083.323.223.416l2.215 1.477-1.18 2.386c-.074.15-.068.327.015.472.083.144.234.238.401.248l2.656.171.171 2.657c.011.167.104.317.249.401.144.083.32.088.472.015l2.386-1.179 1.477 2.214c.093.139.249.223.416.223s.323-.083.416-.223l1.477-2.214 2.386 1.179c.15.073.327.068.472-.015s.238-.234.249-.401l.171-2.656 2.656-.172c.167-.011.317-.104.401-.249.083-.145.089-.322.015-.472l-1.179-2.385 2.214-1.478c.139-.093.223-.249.223-.416s-.083-.323-.223-.416l-2.214-1.475z" fill="#ffe0f0" stroke="#e0218a" stroke-width="0.5"/>
-    <image href="assets/barbieheadshot.jpeg" x="2" y="2" width="20" height="20" clip-path="url(#starburst-clip)" preserveAspectRatio="xMidYMid slice" alt="Barbie headshot"/>
+  <image href="assets/barbieheadshot.jpeg" x="0" y="0" width="24" height="24" clip-path="url(#starburst-clip)" preserveAspectRatio="xMidYMid slice" alt="Barbie headshot"/>
   </svg>
   <h1 class="title">Barbie World!</h1>
   <p class="subtitle">Welcome to my Barbie-inspired page — pink, fun, and fabulous!</p>
@@ -66,35 +128,90 @@
     </div>
   </div>
   <script>
-    const ideas = [
-      "Host a Barbie fashion show with creative outfits!",
-      "Build a Barbie Dreamhouse out of boxes and decorate it.",
-      "Create a Barbie spa day with mini towels and water bowls.",
-      "Go on a Barbie camping trip with a tent and sleeping bags.",
-      "Make a Barbie movie—write a script and act it out!",
-      "Set up a Barbie pet adoption center with stuffed animals.",
-      "Have a Barbie birthday party with tiny treats.",
-      "Invent a new Barbie sport and play it together.",
-      "Plan a Barbie road trip with cars and maps.",
-      "Put on a Barbie talent show with singing and dancing."
-    ];
-    function randomIdea() {
+    // Barbie play ideas by weather type
+    const weatherIdeas = {
+      clear: [
+        "Go on a Barbie picnic in the backyard!",
+        "Host a Barbie fashion show outside!",
+        "Take Barbie for a convertible drive in the sun.",
+        "Plan a Barbie pool party!"
+      ],
+      cloudy: [
+        "Have a cozy Barbie movie marathon indoors.",
+        "Create a Barbie art studio and paint together.",
+        "Build a Barbie Dreamhouse out of boxes and decorate it.",
+        "Host a Barbie tea party inside!"
+      ],
+      rainy: [
+        "Make a Barbie raincoat and go puddle jumping!",
+        "Set up a Barbie spa day with mini towels and water bowls.",
+        "Invent a new Barbie board game to play inside.",
+        "Put on a Barbie talent show indoors."
+      ],
+      snowy: [
+        "Build a Barbie snow fort or igloo!",
+        "Host a Barbie winter fashion show.",
+        "Make a Barbie sled and go for a ride.",
+        "Create a Barbie hot cocoa stand."
+      ],
+      stormy: [
+        "Have a Barbie pajama party while the storm passes.",
+        "Make a Barbie emergency kit and play rescue team.",
+        "Write a Barbie adventure story together.",
+        "Set up a Barbie indoor camping trip."
+      ],
+      foggy: [
+        "Play Barbie hide and seek in the fog!",
+        "Create a mysterious Barbie detective adventure.",
+        "Host a Barbie story time with spooky tales.",
+        "Make a Barbie lighthouse craft."
+      ],
+      default: [
+        "Invent a new Barbie sport and play it together.",
+        "Plan a Barbie road trip with cars and maps.",
+        "Put on a Barbie talent show with singing and dancing.",
+        "Make a Barbie movie—write a script and act it out!"
+      ]
+    };
+
+    function getWeatherType() {
+      // Try to get the weather code from the weather widget
+      if (window.weatherWidget && window.weatherWidget.container) {
+        const iconEl = window.weatherWidget.container.querySelector('.weather-icon');
+        const descEl = window.weatherWidget.container.querySelector('.weather-description');
+        if (descEl) {
+          const desc = descEl.textContent.toLowerCase();
+          if (desc.includes('clear')) return 'clear';
+          if (desc.includes('cloud')) return 'cloudy';
+          if (desc.includes('rain') || desc.includes('drizzle')) return 'rainy';
+          if (desc.includes('snow')) return 'snowy';
+          if (desc.includes('thunder') || desc.includes('storm')) return 'stormy';
+          if (desc.includes('fog')) return 'foggy';
+        }
+      }
+      return 'default';
+    }
+
+    function randomIdeaByWeather() {
+      const type = getWeatherType();
+      const ideas = weatherIdeas[type] || weatherIdeas['default'];
       return ideas[Math.floor(Math.random() * ideas.length)];
     }
+
     const modal = document.getElementById('play-ideas-modal');
     const btn = document.getElementById('play-ideas-btn');
     const closeBtn = document.getElementById('close-modal');
     const ideaText = document.getElementById('idea-text');
     const newIdeaBtn = document.getElementById('new-idea-btn');
     btn.onclick = () => {
-      ideaText.textContent = randomIdea();
+      ideaText.textContent = randomIdeaByWeather();
       modal.style.display = 'flex';
     };
     closeBtn.onclick = () => {
       modal.style.display = 'none';
     };
     newIdeaBtn.onclick = () => {
-      ideaText.textContent = randomIdea();
+      ideaText.textContent = randomIdeaByWeather();
     };
     window.onclick = (e) => {
       if (e.target === modal) modal.style.display = 'none';
@@ -103,4 +220,22 @@
     </div>
   </main>
 </body>
+<script src="scripts/weather.js"></script>
+<script>
+// Add location selector logic for weather widget
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('weather-location-form');
+  const select = document.getElementById('weather-location-select');
+  if (form && select && window.weatherWidget) {
+    select.addEventListener('change', function() {
+      const [lat, lon, ...nameParts] = select.value.split(',');
+      const locationName = nameParts.join(',').trim();
+      window.weatherWidget.options.latitude = parseFloat(lat);
+      window.weatherWidget.options.longitude = parseFloat(lon);
+      window.weatherWidget.options.locationName = locationName;
+      window.weatherWidget.refresh();
+    });
+  }
+});
+</script>
 </html>

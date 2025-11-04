@@ -1,0 +1,104 @@
+/* Minimal Barbie-themed weather widget styles */
+.weather-widget {
+  background: white;
+  color: #e0218a;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(224,33,138,0.08);
+  padding: 12px 18px;
+  min-width: 120px;
+  max-width: 180px;
+  font-family: 'Pacifico', 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1000;
+  border: 2px solid #e0218a;
+  transition: box-shadow 0.2s;
+}
+.weather-widget:hover {
+  box-shadow: 0 4px 24px rgba(224,33,138,0.18);
+}
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.weather-location {
+  font-weight: 600;
+  font-size: 1em;
+  color: #e0218a;
+}
+.weather-time {
+  font-size: 0.8em;
+  color: #bdbdbd;
+}
+.weather-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.weather-temp {
+  font-size: 1.7em;
+  font-weight: 400;
+  color: #e0218a;
+}
+.weather-icon {
+  font-size: 1.7em;
+}
+.weather-description {
+  font-size: 0.95em;
+  color: #e0218a;
+  margin-bottom: 4px;
+}
+.weather-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  color: #bdbdbd;
+}
+.weather-detail {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.weather-error {
+  text-align: center;
+  padding: 8px;
+  background: #ffe0f0;
+  border-radius: 10px;
+  color: #e0218a;
+  border: 1px solid #e0218a;
+}
+.weather-loading {
+  text-align: center;
+  padding: 8px;
+}
+.loading-spinner {
+  border: 2px solid #ffe0f0;
+  border-radius: 50%;
+  border-top: 2px solid #e0218a;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 6px;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@media (max-width: 600px) {
+  .weather-widget {
+    top: 8px;
+    right: 8px;
+    min-width: 90px;
+    max-width: 98vw;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  .weather-temp, .weather-icon {
+    font-size: 1.2em;
+  }
+}
